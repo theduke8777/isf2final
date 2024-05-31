@@ -37,6 +37,8 @@ with open('scaler.pickle', 'rb') as scaler_file:
 
 with st.container(border=True):
     st.markdown('<h3 class="custom-title">Crop Recommendation using KerasClassifier</h3>', unsafe_allow_html=True)
+    st.markdown('<em><h4 class="custom-title" style="padding-top:5px;">by: Gibe S. Tirol</h4></em>', unsafe_allow_html=True)
+
     col1, col2 = st.columns(2)
     with col1:
         st.write('<h5>Environmental Conditions</h5>', unsafe_allow_html=True)
@@ -51,16 +53,16 @@ with st.container(border=True):
         phosphorus = st.number_input('Input the phosphorus value (kg/ha)')
         potassium = st. number_input('Input the potassium value (kg/ha)')
 
-btn_analyze = st.button('Analyze', type='primary', use_container_width=True)
-
-if btn_analyze:
-    input_data = np.array([[nitrogen, phosphorus, potassium, temperature, humidity, ph_value, rainfall]])
-    input_data_scaled = scaler.transform(input_data)
-    prediction = model.predict(input_data_scaled)
-    predicted_crop_index = np.argmax(prediction)
-    predicted_crop = label_encoder.inverse_transform([predicted_crop_index])[0]
-    st.success(f'Recommended Crop: {predicted_crop}')
-
+    btn_analyze = st.button('Analyze', type='primary', use_container_width=True)
     
+    if btn_analyze:
+        input_data = np.array([[nitrogen, phosphorus, potassium, temperature, humidity, ph_value, rainfall]])
+        input_data_scaled = scaler.transform(input_data)
+        prediction = model.predict(input_data_scaled)
+        predicted_crop_index = np.argmax(prediction)
+        predicted_crop = label_encoder.inverse_transform([predicted_crop_index])[0]
+        st.success(f'Recommended Crop: {predicted_crop}')
+    
+        
 
    
