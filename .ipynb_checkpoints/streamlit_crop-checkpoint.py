@@ -36,7 +36,7 @@ with open('scaler.pickle', 'rb') as scaler_file:
     scaler = pickle.load(scaler_file)
 
 with st.container(border=True):
-    st.markdown('<h3 class="custom-title">Crop Recommendation using KerasClassifier</h3>', unsafe_allow_html=True)
+    st.markdown('<h3 class="custom-title">Crop Recommendation</h3>', unsafe_allow_html=True)
     st.markdown('<em><h4 class="custom-title" style="padding-top:5px;">by: Gibe S. Tirol</h4></em>', unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
